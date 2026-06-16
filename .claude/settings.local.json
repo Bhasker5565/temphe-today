@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "WebFetch(domain:tempeh.today)",
+      "Bash(ls -la \"c:\\\\Users\\\\MeetNote\\\\Documents\\\\GitHub\\\\temphe-today\\\\\" 2>/dev/null || dir /a \"c:\\\\Users\\\\MeetNote\\\\Documents\\\\GitHub\\\\temphe-today\\\\\")",
+      "Read(//c/Users/MeetNote/Documents/GitHub/temphe-today\" 2>/dev/null || dir /**)",
+      "Read(//usr/local/bin/**)",
+      "Read(//c//**)"
+    ]
+  }
+}

@@ -1,0 +1,88 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-cream font-sans text-charcoal antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    @apply font-display;
+  }
+
+  * {
+    @apply border-cream-deep;
+  }
+}
+
+@layer components {
+  .btn-primary {
+    @apply inline-flex items-center justify-center px-7 py-3.5 bg-brand text-cream font-sans font-semibold text-sm tracking-wide hover:bg-brand-light transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply inline-flex items-center justify-center px-7 py-3.5 border-2 border-brand text-brand font-sans font-semibold text-sm tracking-wide hover:bg-brand-faint transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-brand focus:ring-offset-2;
+  }
+
+  .btn-turmeric {
+    @apply inline-flex items-center justify-center px-7 py-3.5 bg-turmeric text-charcoal font-sans font-semibold text-sm tracking-wide hover:bg-turmeric-dark hover:text-cream transition-colors duration-200 focus:outline-none focus:ring-2 focus:ring-turmeric focus:ring-offset-2;
+  }
+
+  .tab-btn {
+    @apply px-5 py-3 text-sm font-sans font-medium border-b-2 border-transparent text-charcoal/60 hover:text-charcoal hover:border-sienna transition-colors duration-150 whitespace-nowrap;
+  }
+
+  .tab-btn-active {
+    @apply px-5 py-3 text-sm font-sans font-medium border-b-2 border-brand text-brand whitespace-nowrap;
+  }
+
+  .card {
+    @apply bg-white border border-cream-warm shadow-warm rounded-sm;
+  }
+
+  .badge-grant {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-sans font-semibold bg-turmeric-faint text-turmeric-dark border border-turmeric/30;
+  }
+
+  .badge-loan {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-sans font-semibold bg-forest-faint text-forest border border-forest/30;
+  }
+
+  .badge-interest {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-sans font-semibold bg-blue-50 text-blue-700 border border-blue-200;
+  }
+
+  .badge-equity {
+    @apply inline-flex items-center px-2.5 py-0.5 text-xs font-sans font-semibold bg-brand-faint text-brand border border-brand/30;
+  }
+
+  .section-label {
+    @apply text-xs font-sans font-semibold uppercase tracking-widest text-charcoal/40 mb-2;
+  }
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #FBF5E8;
+}
+::-webkit-scrollbar-thumb {
+  background: #C8956C;
+  border-radius: 3px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #522903;
+}
