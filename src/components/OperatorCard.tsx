@@ -10,7 +10,7 @@ function ProductionMeter({ kg, target = 90 }: { kg: number; target?: number }) {
 
   return (
     <div>
-      <div className="flex items-center gap-1 mb-1.5">
+      <div className="flex items-center gap-1 mb-1">
         {Array.from({ length: dots }, (_, i) => (
           <div
             key={i}
@@ -54,29 +54,29 @@ export default function OperatorCard({ operator }: { operator: Operator }) {
   return (
     <Link
       to={`/operator/${operator.id}`}
-      className="group block bg-white border border-cream-warm hover:border-brand/20 shadow-warm hover:shadow-warm-hover transition-all duration-300 overflow-hidden"
+      className="group block bg-cream border border-cream-deep hover:border-brand/30 shadow-warm hover:shadow-warm-hover transition-all duration-300 ease-out overflow-hidden rounded-lg hover:-translate-y-1"
     >
       {/* Photo */}
-      <div className="relative h-52 bg-cream-warm overflow-hidden">
+      <div className="relative h-44 bg-cream-warm overflow-hidden">
         <img
           src={operator.bannerPhoto}
           alt={`${operator.name}'s MFU unit`}
-          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+          className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
         />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/60 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal/80 via-charcoal/20 to-transparent" />
 
         {/* Profile photo overlay */}
-        <div className="absolute bottom-0 left-0 p-4 flex items-end gap-3">
+        <div className="absolute bottom-0 left-0 p-3.5 flex items-end gap-2.5">
           <img
             src={operator.photo}
             alt={operator.name}
-            className="w-14 h-14 rounded-full border-2 border-white object-cover shadow-lg"
+            className="w-12 h-12 rounded-full border-2 border-white object-cover shadow-lg ring-2 ring-white/20"
           />
           <div>
-            <div className="font-display text-white font-semibold text-base leading-tight">
+            <div className="font-display text-white font-semibold text-base leading-tight drop-shadow-sm">
               {operator.name}
             </div>
-            <div className="font-sans text-white/70 text-xs">{operator.city}, {operator.state}</div>
+            <div className="font-sans text-white/65 text-xs">{operator.city}, {operator.state}</div>
           </div>
         </div>
       </div>
@@ -84,43 +84,39 @@ export default function OperatorCard({ operator }: { operator: Operator }) {
       {/* Card body */}
       <div className="p-5">
         {/* One-liner */}
-        <p className="font-sans text-sm text-charcoal/75 leading-relaxed mb-4 line-clamp-2">
+        <p className="font-sans text-sm text-charcoal/70 leading-relaxed mb-4 line-clamp-2">
           {operator.oneLiner}
         </p>
 
-        {/* Stats row */}
-        <div className="flex items-center justify-between mb-4">
-          <div>
+        {/* Stats grid */}
+        <div className="grid grid-cols-2 divide-x divide-cream-deep border border-cream-deep rounded-md overflow-hidden mb-4">
+          <div className="px-3 py-2.5 bg-cream/50">
             <p className="section-label mb-1">Happiness</p>
             <div className="flex items-center gap-1.5">
-              <span className="text-lg">{happinessEmoji}</span>
-              <span className="font-sans text-sm font-semibold text-charcoal">
-                {operator.happinessScore}/10
-              </span>
+              <span className="text-base leading-none">{happinessEmoji}</span>
+              <span className="font-sans text-sm font-bold text-charcoal">{operator.happinessScore}/10</span>
             </div>
           </div>
-          <div className="text-right">
+          <div className="px-3 py-2.5 bg-cream/50">
             <p className="section-label mb-1">MFU ID</p>
-            <span className="font-sans text-xs font-medium text-charcoal/50">{operator.mfuId}</span>
+            <span className="font-sans text-sm font-medium text-charcoal/55">{operator.mfuId}</span>
           </div>
         </div>
 
         {/* Production meter */}
-        <div className="mb-5">
-          <p className="section-label mb-2">Last Week's Production</p>
+        <div className="mb-4">
+          <p className="section-label mb-1.5">Last Week's Production</p>
           <ProductionMeter kg={operator.lastWeekProduction} target={operator.productionTarget} />
         </div>
 
-        {/* Investment badges */}
-        <div className="flex flex-wrap gap-1.5 mb-5">
-          {operator.investmentTypes.map(type => (
-            <InvestmentBadge key={type} type={type} />
-          ))}
-        </div>
-
-        {/* CTA */}
-        <div className="pt-4 border-t border-cream-warm">
-          <span className="font-sans text-sm font-semibold text-brand group-hover:text-brand-light transition-colors flex items-center gap-1.5">
+        {/* Badges + CTA */}
+        <div className="pt-3.5 border-t border-cream-deep flex items-center justify-between gap-3">
+          <div className="flex flex-wrap gap-1.5">
+            {operator.investmentTypes.map(type => (
+              <InvestmentBadge key={type} type={type} />
+            ))}
+          </div>
+          <span className="font-sans text-sm font-semibold text-brand group-hover:text-brand-light transition-colors flex items-center gap-1 shrink-0">
             View Her Story
             <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
           </span>

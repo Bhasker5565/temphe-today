@@ -38,7 +38,7 @@ export default function OperatorDirectory() {
   }, [query, selectedState, selectedTypes])
 
   return (
-    <section id="operators" className="py-20 lg:py-28 bg-cream">
+    <section id="operators" className="py-20 lg:py-28 bg-cream-warm">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         {/* Header */}
         <div className="mb-12">
@@ -65,7 +65,7 @@ export default function OperatorDirectory() {
                 placeholder="Search by operator name or city…"
                 value={query}
                 onChange={e => setQuery(e.target.value)}
-                className="w-full pl-10 pr-4 py-3 bg-white border border-cream-warm font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
+                className="w-full pl-10 pr-4 py-3 bg-cream border border-cream-deep font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
               />
             </div>
 
@@ -73,7 +73,7 @@ export default function OperatorDirectory() {
             <select
               value={selectedState}
               onChange={e => setSelectedState(e.target.value)}
-              className="px-4 py-3 bg-white border border-cream-warm font-sans text-sm text-charcoal focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:w-48"
+              className="px-4 py-3 bg-cream border border-cream-deep font-sans text-sm text-charcoal focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand sm:w-48"
             >
               {STATES.map(s => (
                 <option key={s} value={s}>{s}</option>
@@ -86,7 +86,7 @@ export default function OperatorDirectory() {
               className={`flex items-center gap-2 px-4 py-3 border font-sans text-sm font-medium transition-colors ${
                 showFilters || selectedTypes.length > 0
                   ? 'bg-brand text-cream border-brand'
-                  : 'bg-white border-cream-warm text-charcoal/70 hover:border-brand/40'
+                  : 'bg-cream border-cream-deep text-charcoal/70 hover:border-brand/40'
               }`}
             >
               <SlidersHorizontal size={15} />
@@ -101,7 +101,7 @@ export default function OperatorDirectory() {
 
           {/* Investment type checkboxes */}
           {showFilters && (
-            <div className="bg-white border border-cream-warm p-4 flex flex-wrap gap-3">
+            <div className="bg-cream border border-cream-deep p-4 flex flex-wrap gap-3">
               {INVESTMENT_TYPES.map(type => (
                 <label
                   key={type}

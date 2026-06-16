@@ -61,7 +61,7 @@ export default function RegisterPage() {
   if (submitted) {
     return (
       <div className="min-h-screen pt-16 flex items-center justify-center px-6">
-        <div className="bg-white shadow-warm max-w-md w-full p-10 text-center">
+        <div className="bg-cream shadow-warm max-w-md w-full p-10 text-center">
           <div className="w-16 h-16 bg-forest-faint rounded-full flex items-center justify-center mx-auto mb-6">
             <CheckCircle2 size={32} className="text-forest" />
           </div>
@@ -84,18 +84,21 @@ export default function RegisterPage() {
   }
 
   return (
-    <div className="min-h-screen pt-16 bg-cream">
+    <div className="min-h-screen pt-16 bg-cream-warm">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-16">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
           {/* Left: story panel */}
           <div className="hidden lg:block">
-            <div className="relative h-full min-h-[500px] overflow-hidden">
+            <div className="relative h-full min-h-[500px] overflow-hidden rounded-2xl">
               <img
                 src="https://tempeh.today/wp-content/uploads/2026/06/fdd99f54-4e39-4d4a-92a1-7ec41249c5cd-1024x768.jpg"
                 alt="MFU operator"
                 className="absolute inset-0 w-full h-full object-cover"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand/40 to-transparent" />
+              <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-cream-warm/70 to-transparent" />
+              <div className="absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-cream-warm/70 to-transparent" />
+              <div className="absolute inset-y-0 right-0 w-14 bg-gradient-to-l from-cream-warm/70 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-10">
                 <p className="font-display text-white/40 text-sm uppercase tracking-widest mb-4">Why register?</p>
                 <blockquote className="font-display text-white text-2xl font-bold italic leading-snug mb-6">
@@ -132,7 +135,7 @@ export default function RegisterPage() {
                   value={form.fullName}
                   onChange={e => set('fullName', e.target.value)}
                   placeholder="Your full name"
-                  className={`w-full px-4 py-3 bg-white border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand ${errors.fullName ? 'border-red-400 focus:border-red-400' : 'border-cream-warm focus:border-brand'}`}
+                  className={`w-full px-4 py-3 bg-cream border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand ${errors.fullName ? 'border-red-400 focus:border-red-400' : 'border-cream-deep focus:border-brand'}`}
                 />
                 {errors.fullName && <p className="font-sans text-xs text-red-500 mt-1">{errors.fullName}</p>}
               </div>
@@ -147,7 +150,7 @@ export default function RegisterPage() {
                   value={form.email}
                   onChange={e => set('email', e.target.value)}
                   placeholder="you@example.com"
-                  className={`w-full px-4 py-3 bg-white border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand ${errors.email ? 'border-red-400 focus:border-red-400' : 'border-cream-warm focus:border-brand'}`}
+                  className={`w-full px-4 py-3 bg-cream border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand ${errors.email ? 'border-red-400 focus:border-red-400' : 'border-cream-deep focus:border-brand'}`}
                 />
                 {errors.email && <p className="font-sans text-xs text-red-500 mt-1">{errors.email}</p>}
               </div>
@@ -163,7 +166,7 @@ export default function RegisterPage() {
                     value={form.mobile}
                     onChange={e => set('mobile', e.target.value)}
                     placeholder="+91 98765 43210"
-                    className="w-full px-4 py-3 bg-white border border-cream-warm font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full px-4 py-3 bg-cream border border-cream-deep font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                 </div>
                 <div>
@@ -173,7 +176,7 @@ export default function RegisterPage() {
                   <select
                     value={form.country}
                     onChange={e => set('country', e.target.value)}
-                    className="w-full px-4 py-3 bg-white border border-cream-warm font-sans text-sm text-charcoal focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full px-4 py-3 bg-cream border border-cream-deep font-sans text-sm text-charcoal focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
                   >
                     {COUNTRIES.map(c => <option key={c} value={c}>{c}</option>)}
                   </select>
@@ -192,7 +195,7 @@ export default function RegisterPage() {
                       className={`flex items-start gap-3 p-3 border cursor-pointer transition-colors ${
                         form.interest === opt.value
                           ? 'border-brand bg-brand-faint'
-                          : 'border-cream-warm bg-white hover:border-brand/30'
+                          : 'border-cream-deep bg-cream hover:border-brand/30'
                       }`}
                     >
                       <input
@@ -232,7 +235,7 @@ export default function RegisterPage() {
                       value={form.password}
                       onChange={e => set('password', e.target.value)}
                       placeholder="Min. 8 characters"
-                      className={`w-full px-4 py-3 bg-white border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand pr-10 ${errors.password ? 'border-red-400 focus:border-red-400' : 'border-cream-warm focus:border-brand'}`}
+                      className={`w-full px-4 py-3 bg-cream border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand pr-10 ${errors.password ? 'border-red-400 focus:border-red-400' : 'border-cream-deep focus:border-brand'}`}
                     />
                     <button type="button" onClick={() => setShowPassword(!showPassword)} className="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal/40 hover:text-brand">
                       {showPassword ? <EyeOff size={15} /> : <Eye size={15} />}
@@ -250,7 +253,7 @@ export default function RegisterPage() {
                       value={form.confirmPassword}
                       onChange={e => set('confirmPassword', e.target.value)}
                       placeholder="Repeat password"
-                      className={`w-full px-4 py-3 bg-white border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand pr-10 ${errors.confirmPassword ? 'border-red-400 focus:border-red-400' : 'border-cream-warm focus:border-brand'}`}
+                      className={`w-full px-4 py-3 bg-cream border font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:ring-1 focus:ring-brand pr-10 ${errors.confirmPassword ? 'border-red-400 focus:border-red-400' : 'border-cream-deep focus:border-brand'}`}
                     />
                     <button type="button" onClick={() => setShowConfirm(!showConfirm)} className="absolute right-3 top-1/2 -translate-y-1/2 text-charcoal/40 hover:text-brand">
                       {showConfirm ? <EyeOff size={15} /> : <Eye size={15} />}
