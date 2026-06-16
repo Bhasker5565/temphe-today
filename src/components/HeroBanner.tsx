@@ -18,29 +18,29 @@ export default function HeroBanner() {
       <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/60 via-transparent to-transparent" />
 
       {/* Content */}
-      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-24 pb-20">
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6 lg:px-12 pt-20 pb-8 md:pt-24 md:pb-16 lg:pb-20">
         <div className="max-w-xl lg:max-w-2xl">
-          <p className="font-sans text-turmeric text-xs font-semibold uppercase tracking-[0.2em] mb-5">
+          <p className="font-sans text-turmeric text-xs font-semibold uppercase tracking-[0.2em] mb-3 md:mb-5">
             Tempeh Today — MFU Operator Connect
           </p>
 
-          <h1 className="font-display text-white leading-[1.1] mb-6">
-            <span className="block text-4xl md:text-5xl lg:text-6xl font-bold">
+          <h1 className="font-display text-white leading-[1.1] mb-4 md:mb-6">
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold">
               Invest in a Woman.
             </span>
-            <span className="block text-4xl md:text-5xl lg:text-6xl font-bold italic text-turmeric-light mt-1">
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold italic text-turmeric-light mt-1">
               Change a Family.
             </span>
-            <span className="block text-4xl md:text-5xl lg:text-6xl font-bold mt-1">
+            <span className="block text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mt-1">
               Build a Nation.
             </span>
           </h1>
 
-          <p className="font-sans text-cream/90 text-lg md:text-xl font-light leading-relaxed mb-10 max-w-lg">
+          <p className="font-sans text-cream/90 text-base md:text-lg lg:text-xl font-light leading-relaxed mb-6 md:mb-10 max-w-lg">
             Meet the women behind every block of Tempeh — and choose how you want to support them.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4">
             <a
               href="#operators"
               className="btn-turmeric gap-2 text-sm"
@@ -57,17 +57,17 @@ export default function HeroBanner() {
           </div>
 
           {/* Impact numbers */}
-          <div className="mt-14 flex gap-8 sm:gap-12">
+          <div className="mt-8 md:mt-12 lg:mt-14 flex gap-6 sm:gap-8 md:gap-12">
             <div>
-              <div className="font-display text-turmeric text-3xl font-bold">6</div>
+              <div className="font-display text-turmeric text-2xl md:text-3xl font-bold">6</div>
               <div className="font-sans text-cream/60 text-xs mt-0.5">Active MFU Operators</div>
             </div>
-            <div className="border-l border-cream/20 pl-8 sm:pl-12">
-              <div className="font-display text-turmeric text-3xl font-bold">73,650<span className="text-lg ml-1">kg</span></div>
+            <div className="border-l border-cream/20 pl-6 sm:pl-8 md:pl-12">
+              <div className="font-display text-turmeric text-2xl md:text-3xl font-bold">73,650<span className="text-base md:text-lg ml-1">kg</span></div>
               <div className="font-sans text-cream/60 text-xs mt-0.5">Tempeh Produced</div>
             </div>
-            <div className="border-l border-cream/20 pl-8 sm:pl-12">
-              <div className="font-display text-turmeric text-3xl font-bold">1,200+</div>
+            <div className="border-l border-cream/20 pl-6 sm:pl-8 md:pl-12">
+              <div className="font-display text-turmeric text-2xl md:text-3xl font-bold">1,200+</div>
               <div className="font-sans text-cream/60 text-xs mt-0.5">Families Fed Weekly</div>
             </div>
           </div>
