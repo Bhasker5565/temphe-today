@@ -59,7 +59,7 @@ export default function HeroBanner() {
         </div>
 
         {/* ── Stats — pinned to the bottom of the viewport ── */}
-        <div className="flex items-end gap-5 sm:gap-8 md:gap-12 pt-4 border-t border-cream/15">
+        <div className="flex items-end gap-5 sm:gap-8 md:gap-12 pt-4">
           <div>
             <div className="font-display text-turmeric text-xl sm:text-2xl md:text-3xl font-bold leading-none">6</div>
             <div className="font-sans text-cream/55 text-[10px] sm:text-xs mt-1">Active MFU Operators</div>
