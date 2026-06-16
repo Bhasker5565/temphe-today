@@ -23,7 +23,7 @@ const steps = [
 
 export default function HowItWorks() {
   return (
-    <section id="how-it-works" className="bg-brand py-20 lg:py-28">
+    <section id="how-it-works" data-nav-dark className="bg-brand py-20 lg:py-28">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="text-center mb-14">
           <p className="section-label text-cream/40 mb-3">How it works</p>

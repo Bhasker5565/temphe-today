@@ -13,8 +13,8 @@ export const operators: Operator[] = [
     state: 'Maharashtra',
     mfuId: 'MFU-MH-001',
     yearsInOperation: 3,
-    photo: 'https://randomuser.me/api/portraits/women/44.jpg',
-    bannerPhoto: 'https://tempeh.today/wp-content/uploads/2026/06/110526-Tempeh-Today-001-1024x683.jpg',
+    photo: '/images/pic_1.jpg',
+    bannerPhoto: '/images/hero.jpeg',
     oneLiner: 'From her tiny unit in Hadapsar, Priya feeds 200 families every week — and just paid her daughter\'s first engineering college fee.',
     bio: 'I grew up watching my mother struggle to make ends meet as a domestic worker. For fifteen years, I did the same — washing dishes in three different homes every day just to put food on our table. When I heard about the MFU programme, I didn\'t believe it was real. But my sister pushed me to apply, and three years later, I\'m producing nearly 90 kilograms of tempeh every week — clean protein that feeds over 200 families in Hadapsar.\n\nMy daughter Sneha was accepted to the Pune Institute of Computer Technology last month. I cried for two days. This unit didn\'t just change my income. It changed our family\'s story forever. When I hand a block of tempeh to a customer, I\'m not just selling food. I\'m proving that a woman from Hadapsar can build something real.',
     family: {
@@ -47,7 +47,7 @@ export const operators: Operator[] = [
     gallery: [
       {
         id: 'g1-1',
-        url: 'https://tempeh.today/wp-content/uploads/2026/06/110526-Tempeh-Today-001-1024x683.jpg',
+        url: '/images/hero.jpeg',
         caption: 'Morning production at my Hadapsar unit — 6am and the fermentation is already underway.',
         date: 'June 9, 2026',
         category: 'Production',
@@ -61,14 +61,14 @@ export const operators: Operator[] = [
       },
       {
         id: 'g1-3',
-        url: 'https://tempeh.today/wp-content/uploads/2020/12/Health-indian-couple-BEWERKT-kopie-4-1024x819.jpg',
+        url: '/images/group_2.jpg',
         caption: 'With Raj on the day we received Sneha\'s college acceptance letter.',
         date: 'May 15, 2026',
         category: 'Family',
       },
       {
         id: 'g1-4',
-        url: 'https://tempeh.today/wp-content/uploads/2025/06/WhatsApp-Image-2024-11-14-at-08.47.09-1024x768.jpeg',
+        url: '/images/pic_3.jpeg',
         caption: 'Three years in operation — my MFU unit that started it all.',
         date: 'March 1, 2026',
         category: 'Milestone',
@@ -83,8 +83,8 @@ export const operators: Operator[] = [
     state: 'Telangana',
     mfuId: 'MFU-TG-003',
     yearsInOperation: 2,
-    photo: 'https://randomuser.me/api/portraits/women/55.jpg',
-    bannerPhoto: 'https://tempeh.today/wp-content/uploads/2026/06/fdd99f54-4e39-4d4a-92a1-7ec41249c5cd-1024x768.jpg',
+    photo: '/images/pic_2.jpg',
+    bannerPhoto: '/images/hero_2.jpeg',
     oneLiner: 'Widowed at 38, Kavitha rebuilt her family\'s future one 92kg batch at a time — and recently landed a hotel chain contract.',
     bio: 'My husband passed away four years ago. For a year, I couldn\'t get out of bed. My mother-in-law and two sons depended entirely on me, and I had nothing. A neighbour told me about the MFU project and drove me to the information session herself. I remember sitting in the back, thinking — this is too good for someone like me.\n\nI was wrong. I\'ve been running this unit for two years now. Last month, I supplied to a boutique hotel chain in Banjara Hills. My sons Ravi and Suresh see me differently now — not as the woman who was broken, but as the woman who got back up. I want them to carry that image of me forever, not the other one.',
     family: {
@@ -111,7 +111,7 @@ export const operators: Operator[] = [
     gallery: [
       {
         id: 'g2-1',
-        url: 'https://tempeh.today/wp-content/uploads/2026/06/fdd99f54-4e39-4d4a-92a1-7ec41249c5cd-1024x768.jpg',
+        url: '/images/hero_2.jpeg',
         caption: 'Inspecting the morning batch at my Banjara Hills delivery run.',
         date: 'June 8, 2026',
         category: 'Production',
@@ -125,7 +125,7 @@ export const operators: Operator[] = [
       },
       {
         id: 'g2-3',
-        url: 'https://tempeh.today/wp-content/uploads/2025/06/WhatsApp-Image-2024-11-14-at-08.47.09-1024x768.jpeg',
+        url: '/images/group_2.jpg',
         caption: 'Ravi and Suresh at my unit on the day we hit our first 90kg week.',
         date: 'April 3, 2026',
         category: 'Milestone',
@@ -140,8 +140,8 @@ export const operators: Operator[] = [
     state: 'Tamil Nadu',
     mfuId: 'MFU-TN-007',
     yearsInOperation: 4,
-    photo: 'https://randomuser.me/api/portraits/women/68.jpg',
-    bannerPhoto: 'https://tempeh.today/wp-content/uploads/2026/06/110526-Tempeh-Today-001-1024x683.jpg',
+    photo: '/images/pic_4.jpg',
+    bannerPhoto: '/images/group_2.jpg',
     oneLiner: 'A grandmother who started at 52, Meenakshi has trained three other women — and still shows up every day, knee pain and all.',
     bio: 'I have been making fermented foods my whole life. My grandmother taught me to make idli batter at the age of six — the smell of fermentation is the smell of home to me. When I joined the MFU programme four years ago, I was already 52. People told me I was too old to start something new.\n\nToday, I have trained three younger women from my street to run their own units. If anything, these four years have been the richest of my life — not just in income, but in purpose. I am facing some health challenges right now — a knee condition that has slowed my production slightly this month — but my hands still know what to do every morning. And the community has rallied around me in ways that have moved me deeply.',
     family: {
@@ -183,14 +183,14 @@ export const operators: Operator[] = [
       },
       {
         id: 'g3-2',
-        url: 'https://tempeh.today/wp-content/uploads/2026/06/110526-Tempeh-Today-001-1024x683.jpg',
+        url: '/images/group_1.jpeg',
         caption: 'Training session with Radha — passing on what I know.',
         date: 'April 20, 2026',
         category: 'Milestone',
       },
       {
         id: 'g3-3',
-        url: 'https://tempeh.today/wp-content/uploads/2020/12/Health-indian-couple-BEWERKT-kopie-4-1024x819.jpg',
+        url: '/images/pic_4.jpg',
         caption: 'Murugan and me on our 34th anniversary — he has believed in this from day one.',
         date: 'February 12, 2026',
         category: 'Family',
@@ -205,8 +205,8 @@ export const operators: Operator[] = [
     state: 'Gujarat',
     mfuId: 'MFU-GJ-002',
     yearsInOperation: 3,
-    photo: 'https://randomuser.me/api/portraits/women/29.jpg',
-    bannerPhoto: 'https://tempeh.today/wp-content/uploads/2025/07/20-Tempeh-Blokjes-Ketjap-07-1024x683.jpg',
+    photo: '/images/pic_3.jpeg',
+    bannerPhoto: '/images/hero.jpeg',
     oneLiner: 'Sunita sells out every Tuesday. She has a waiting list of 20 customers — and a detailed expansion plan already written.',
     bio: 'I have always been a businesswoman at heart — even when I was just selling pickles from my doorstep. When I discovered tempeh, I saw it immediately: this is the future of protein in India, and I want to be part of it from the beginning.\n\nMy unit in Katargam has been running for nearly three years, and I sell out by Tuesday every single week at the organic market in Adajan. I have a waiting list of twenty customers. I\'m not talking about expanding because it\'s a dream — I\'m talking about it because the numbers make sense. What I need is a partner who sees what I see: a category that is about to explode in the Indian health food market, with a woman who is already ahead of it.',
     family: {
@@ -244,14 +244,14 @@ export const operators: Operator[] = [
       },
       {
         id: 'g4-2',
-        url: 'https://tempeh.today/wp-content/uploads/2025/06/P00123-Tempehblokjes-Naturel-1024x683.jpg',
+        url: '/images/hero.jpeg',
         caption: '95kg this week — a personal record.',
         date: 'June 9, 2026',
         category: 'Milestone',
       },
       {
         id: 'g4-3',
-        url: 'https://tempeh.today/wp-content/uploads/2026/06/fdd99f54-4e39-4d4a-92a1-7ec41249c5cd-1024x768.jpg',
+        url: '/images/pic_3.jpeg',
         caption: 'Early morning at the unit. This is where the magic happens.',
         date: 'May 5, 2026',
         category: 'Production',
@@ -266,8 +266,8 @@ export const operators: Operator[] = [
     state: 'Uttar Pradesh',
     mfuId: 'MFU-UP-012',
     yearsInOperation: 2,
-    photo: 'https://randomuser.me/api/portraits/women/76.jpg',
-    bannerPhoto: 'https://tempeh.today/wp-content/uploads/2026/06/fdd99f54-4e39-4d4a-92a1-7ec41249c5cd-1024x768.jpg',
+    photo: '/images/pic_1.jpg',
+    bannerPhoto: '/images/hero_2.jpeg',
     oneLiner: 'The first businesswoman in her mohalla, Fatima\'s daughters now say they want to be "business women like Ammi."',
     bio: 'In my mohalla, women don\'t run businesses. That is just how it has always been. When I told my husband Imran that I wanted to join the MFU programme, there was a week of difficult conversations. But he said — if you believe in it, I believe in you. That was all I needed.\n\nEighteen months ago, I started producing. Today, I am the only woman in Chinhat who runs her own food production unit. My daughters Zainab and Rubina — aged 14 and 11 — tell their friends: "Our ammi is a businesswoman." I want them to grow up thinking that is the most normal thing in the world. That is the real product I am making here.',
     family: {
@@ -298,14 +298,14 @@ export const operators: Operator[] = [
     gallery: [
       {
         id: 'g5-1',
-        url: 'https://tempeh.today/wp-content/uploads/2026/06/fdd99f54-4e39-4d4a-92a1-7ec41249c5cd-1024x768.jpg',
+        url: '/images/hero_2.jpeg',
         caption: 'At my unit in Chinhat — every block here is made with full heart.',
         date: 'June 8, 2026',
         category: 'Production',
       },
       {
         id: 'g5-2',
-        url: 'https://tempeh.today/wp-content/uploads/2025/06/WhatsApp-Image-2024-11-14-at-08.47.09-1024x768.jpeg',
+        url: '/images/group_2.jpg',
         caption: 'The unit that Imran and I built together.',
         date: 'April 10, 2026',
         category: 'Milestone',
@@ -320,8 +320,8 @@ export const operators: Operator[] = [
     state: 'Kerala',
     mfuId: 'MFU-KL-005',
     yearsInOperation: 4,
-    photo: 'https://randomuser.me/api/portraits/women/81.jpg',
-    bannerPhoto: 'https://tempeh.today/wp-content/uploads/2025/06/P00123-Tempehblokjes-Naturel-1024x683.jpg',
+    photo: '/images/pic_2.jpg',
+    bannerPhoto: '/images/group_2.jpg',
     oneLiner: 'A retired biology teacher who kept fermentation journals, Lakshmi was featured in Mathrubhumi — and her old students sent messages for a week.',
     bio: 'I taught biology and chemistry in a government school for twenty-two years. Fermentation was always my favourite lesson — watching invisible organisms transform something ordinary into something extraordinary. When I retired and learned about the MFU project, it felt like the universe had saved the best chapter for last.\n\nI run my unit with the same rigour I brought to my classroom: temperature logs, fermentation journals, quality notes for every batch. Three months ago, a journalist from Mathrubhumi came to write about me. My old students sent congratulatory messages for a week. My son Arun called from the Indian Ocean where his ship was docked. I\'ve never been happier. Retirement, it turns out, was just intermission.',
     family: {
@@ -360,21 +360,21 @@ export const operators: Operator[] = [
       },
       {
         id: 'g6-2',
-        url: 'https://tempeh.today/wp-content/uploads/2025/06/WhatsApp-Image-2024-11-14-at-08.47.09-1024x768.jpeg',
+        url: '/images/hero.jpeg',
         caption: 'My fermentation unit — built with Krishnadas\'s engineering precision.',
         date: 'May 28, 2026',
         category: 'Production',
       },
       {
         id: 'g6-3',
-        url: 'https://tempeh.today/wp-content/uploads/2020/12/Health-indian-couple-BEWERKT-kopie-4-1024x819.jpg',
+        url: '/images/pic_4.jpg',
         caption: 'Krishnadas and me — 38 years of partnership, and the best chapter is now.',
         date: 'March 20, 2026',
         category: 'Family',
       },
       {
         id: 'g6-4',
-        url: 'https://tempeh.today/wp-content/uploads/2026/06/fdd99f54-4e39-4d4a-92a1-7ec41249c5cd-1024x768.jpg',
+        url: '/images/group_1.jpeg',
         caption: 'The Mathrubhumi journalist photographing my fermentation journals.',
         date: 'March 5, 2026',
         category: 'Milestone',
