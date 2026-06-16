@@ -56,7 +56,7 @@ export default function OperatorProfilePage() {
   return (
     <div className="min-h-screen pt-16">
       {/* Banner */}
-      <div className="relative h-72 md:h-96 overflow-hidden">
+      <div data-nav-dark className="relative h-72 md:h-96 overflow-hidden">
         <img
           src={operator.bannerPhoto}
           alt={`${operator.name}'s MFU unit`}

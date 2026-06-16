@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { Link, useNavigate, useLocation } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Menu, X, LogOut, User } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
@@ -7,25 +7,31 @@ interface NavbarProps {
   onLoginClick?: () => void
 }
 
+const NAV_H = 64 // matches h-16
+
 export default function Navbar({ onLoginClick }: NavbarProps) {
   const { isLoggedIn, user, logout } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [overDark, setOverDark] = useState(false)
   const navigate = useNavigate()
-  const { pathname } = useLocation()
-
-  // Pages that open with a dark hero image at the top
-  const hasDarkHero = pathname === '/' || pathname.startsWith('/operator/')
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40)
-    onScroll()
-    window.addEventListener('scroll', onScroll, { passive: true })
-    return () => window.removeEventListener('scroll', onScroll)
+    const check = () => {
+      const darkEls = document.querySelectorAll('[data-nav-dark]')
+      let dark = false
+      darkEls.forEach(el => {
+        const { top, bottom } = el.getBoundingClientRect()
+        if (top < NAV_H && bottom > NAV_H) dark = true
+      })
+      setOverDark(dark)
+    }
+    check()
+    window.addEventListener('scroll', check, { passive: true })
+    return () => window.removeEventListener('scroll', check)
   }, [])
 
-  // Transparent over dark hero only when at the very top; always opaque on light pages
-  const isTransparent = hasDarkHero && !scrolled
+  // isTransparent = navbar sits over a dark section → white text, no background
+  const isTransparent = overDark
 
   const handleLogout = () => {
     logout()

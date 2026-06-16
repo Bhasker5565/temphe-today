@@ -5,7 +5,7 @@ export default function HeroBanner() {
   const navigate = useNavigate()
 
   return (
-    <section className="relative w-full min-h-[92vh] overflow-hidden flex items-center">
+    <section data-nav-dark className="relative w-full min-h-[92vh] overflow-hidden flex items-center">
       {/* Background image */}
       <img
         src="/images/hero.jpeg"
