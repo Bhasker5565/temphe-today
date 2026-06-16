@@ -51,6 +51,26 @@ export default function HowItWorks() {
             </div>
           ))}
         </div>
+
+        {/* Women photo strip */}
+        <div className="mt-12 relative overflow-hidden h-56 md:h-72">
+          <img
+            src="/images/group_1.jpeg"
+            alt="MFU operators — women building a better future"
+            className="w-full h-full object-cover object-center"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-brand/80 via-brand/40 to-transparent" />
+          <div className="absolute inset-0 flex items-center px-8 lg:px-12">
+            <div>
+              <p className="font-sans text-turmeric text-xs font-semibold uppercase tracking-[0.2em] mb-2">
+                The community behind every block
+              </p>
+              <p className="font-display text-cream text-2xl md:text-3xl font-bold max-w-sm leading-snug">
+                Over 6 women.<br />One shared mission.
+              </p>
+            </div>
+          </div>
+        </div>
       </div>
     </section>
   )

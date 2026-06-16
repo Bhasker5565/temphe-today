@@ -8,7 +8,7 @@ export default function HeroBanner() {
     <section className="relative w-full min-h-[92vh] overflow-hidden flex items-center">
       {/* Background image */}
       <img
-        src="https://tempeh.today/wp-content/uploads/2026/06/110526-Tempeh-Today-001-1024x683.jpg"
+        src="/images/hero.jpeg"
         alt="MFU operator at work in her unit"
         className="absolute inset-0 w-full h-full object-cover object-center"
       />
