@@ -96,7 +96,7 @@ export default function Navbar({ onLoginClick }: NavbarProps) {
               </>
             ) : (
               <>
-                <button onClick={onLoginClick} className={linkCls + ' px-4 py-2'}>
+                <button onClick={() => navigate('/login')} className={linkCls + ' px-4 py-2'}>
                   Login
                 </button>
                 <button

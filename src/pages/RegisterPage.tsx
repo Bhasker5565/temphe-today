@@ -115,7 +115,7 @@ export default function RegisterPage() {
               </h1>
               <p className="font-sans text-charcoal/60 text-sm">
                 Already registered?{' '}
-                <Link to="/" className="text-brand hover:underline font-medium">
+                <Link to="/login" className="text-brand hover:underline font-medium">
                   Log in here
                 </Link>
               </p>
