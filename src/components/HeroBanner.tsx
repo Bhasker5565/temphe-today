@@ -10,7 +10,7 @@ export default function HeroBanner() {
       <img
         src="/images/hero.jpeg"
         alt="MFU operator at work in her unit"
-        className="absolute inset-0 w-full h-full object-cover object-center"
+        className="absolute inset-0 w-full h-full object-cover object-top"
       />
 
       {/* Gradient: strong brown on left, fades right */}
