@@ -34,19 +34,22 @@ export default function LoginPage() {
   }
 
   return (
-    <div className="min-h-screen pt-16 bg-cream">
+    <div className="min-h-screen pt-16 bg-cream-warm">
       <div className="max-w-7xl mx-auto px-6 lg:px-12 py-12 lg:py-20">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
 
           {/* Left: image panel */}
           <div className="hidden lg:block">
-            <div className="relative h-full min-h-[520px] overflow-hidden">
+            <div className="relative h-full min-h-[520px] overflow-hidden rounded-2xl">
               <img
                 src="/images/hero_2.jpeg"
                 alt="MFU operators at work"
                 className="absolute inset-0 w-full h-full object-cover object-center"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand/50 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/90 via-brand/40 to-transparent" />
+              <div className="absolute inset-x-0 top-0 h-20 bg-gradient-to-b from-cream-warm/70 to-transparent" />
+              <div className="absolute inset-y-0 left-0 w-14 bg-gradient-to-r from-cream-warm/70 to-transparent" />
+              <div className="absolute inset-y-0 right-0 w-14 bg-gradient-to-l from-cream-warm/70 to-transparent" />
               <div className="absolute bottom-0 left-0 right-0 p-10">
                 <p className="font-sans text-cream/40 text-xs font-semibold uppercase tracking-[0.2em] mb-4">
                   Welcome back
@@ -86,7 +89,7 @@ export default function LoginPage() {
                   value={email}
                   onChange={e => setEmail(e.target.value)}
                   placeholder="you@example.com"
-                  className="w-full px-4 py-3 bg-white border border-cream-warm font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
+                  className="w-full px-4 py-3 bg-cream border border-cream-deep font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
                 />
               </div>
 
@@ -101,7 +104,7 @@ export default function LoginPage() {
                     value={password}
                     onChange={e => setPassword(e.target.value)}
                     placeholder="Your password"
-                    className="w-full px-4 py-3 pr-11 bg-white border border-cream-warm font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
+                    className="w-full px-4 py-3 pr-11 bg-cream border border-cream-deep font-sans text-sm text-charcoal placeholder-charcoal/40 focus:outline-none focus:border-brand focus:ring-1 focus:ring-brand"
                   />
                   <button
                     type="button"

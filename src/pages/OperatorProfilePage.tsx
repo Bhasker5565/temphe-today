@@ -60,7 +60,7 @@ export default function OperatorProfilePage() {
         <img
           src={operator.bannerPhoto}
           alt={`${operator.name}'s MFU unit`}
-          className="absolute inset-0 w-full h-full object-cover object-center"
+          className="absolute inset-0 w-full h-full object-cover object-top"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-brand-dark/80 via-brand/30 to-transparent" />
 
