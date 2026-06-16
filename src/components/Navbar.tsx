@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { Link, useNavigate, useLocation } from 'react-router-dom'
 import { Menu, X, LogOut, User } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
@@ -10,15 +10,40 @@ interface NavbarProps {
 export default function Navbar({ onLoginClick }: NavbarProps) {
   const { isLoggedIn, user, logout } = useAuth()
   const [menuOpen, setMenuOpen] = useState(false)
+  const [scrolled, setScrolled] = useState(false)
   const navigate = useNavigate()
+  const { pathname } = useLocation()
+
+  // Pages that open with a dark hero image at the top
+  const hasDarkHero = pathname === '/' || pathname.startsWith('/operator/')
+
+  useEffect(() => {
+    const onScroll = () => setScrolled(window.scrollY > 40)
+    onScroll()
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
+  // Transparent over dark hero only when at the very top; always opaque on light pages
+  const isTransparent = hasDarkHero && !scrolled
 
   const handleLogout = () => {
     logout()
     setMenuOpen(false)
   }
 
+  const linkCls = isTransparent
+    ? 'text-sm font-sans font-medium text-cream/90 hover:text-turmeric-light transition-colors duration-200'
+    : 'text-sm font-sans font-medium text-charcoal/70 hover:text-brand transition-colors duration-200'
+
+  const iconCls = isTransparent ? 'text-cream/80 hover:text-turmeric-light' : 'text-charcoal/70 hover:text-brand'
+
   return (
-    <header className="fixed top-0 left-0 right-0 z-50 bg-cream/96 backdrop-blur-sm border-b border-cream-warm">
+    <header className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
+      isTransparent
+        ? 'bg-transparent border-b border-white/10'
+        : 'bg-cream/96 backdrop-blur-sm border-b border-cream-warm shadow-sm'
+    }`}>
       <div className="max-w-7xl mx-auto px-5 lg:px-8">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
@@ -26,8 +51,8 @@ export default function Navbar({ onLoginClick }: NavbarProps) {
             <svg
               xmlns="http://www.w3.org/2000/svg"
               viewBox="0 0 216.2 32.6"
-              fill="#522903"
-              className="h-6 w-auto"
+              fill={isTransparent ? '#FBF5E8' : '#522903'}
+              className="h-6 w-auto transition-all duration-300"
               aria-label="Tempeh Today"
             >
               <path d="M0 3.9V.4h14.4v3.5H9.1v19.9H5.3V3.9z"/>
@@ -39,16 +64,10 @@ export default function Navbar({ onLoginClick }: NavbarProps) {
 
           {/* Desktop nav */}
           <nav className="hidden md:flex items-center gap-8">
-            <a
-              href="/#operators"
-              className="text-sm font-sans font-medium text-charcoal/70 hover:text-brand transition-colors"
-            >
+            <a href="/#operators" className={linkCls}>
               Browse Operators
             </a>
-            <a
-              href="/#how-it-works"
-              className="text-sm font-sans font-medium text-charcoal/70 hover:text-brand transition-colors"
-            >
+            <a href="/#how-it-works" className={linkCls}>
               How It Works
             </a>
           </nav>
@@ -57,13 +76,13 @@ export default function Navbar({ onLoginClick }: NavbarProps) {
           <div className="hidden md:flex items-center gap-3">
             {isLoggedIn ? (
               <>
-                <div className="flex items-center gap-2 text-sm font-sans font-medium text-charcoal/80">
-                  <User size={15} className="text-brand" />
+                <div className={`flex items-center gap-2 text-sm font-sans font-medium ${isTransparent ? 'text-cream/90' : 'text-charcoal/80'}`}>
+                  <User size={15} className={isTransparent ? 'text-turmeric-light' : 'text-brand'} />
                   <span>Hi, {user?.name.split(' ')[0]}</span>
                 </div>
                 <button
                   onClick={handleLogout}
-                  className="flex items-center gap-1.5 text-sm font-sans font-medium text-charcoal/60 hover:text-brand transition-colors"
+                  className={`flex items-center gap-1.5 text-sm font-sans font-medium transition-colors ${isTransparent ? 'text-cream/70 hover:text-turmeric-light' : 'text-charcoal/60 hover:text-brand'}`}
                 >
                   <LogOut size={14} />
                   Log out
@@ -71,15 +90,12 @@ export default function Navbar({ onLoginClick }: NavbarProps) {
               </>
             ) : (
               <>
-                <button
-                  onClick={onLoginClick}
-                  className="text-sm font-sans font-medium text-charcoal/70 hover:text-brand transition-colors px-4 py-2"
-                >
+                <button onClick={onLoginClick} className={linkCls + ' px-4 py-2'}>
                   Login
                 </button>
                 <button
                   onClick={() => navigate('/register')}
-                  className="btn-primary text-xs py-2.5 px-5"
+                  className={isTransparent ? 'inline-flex items-center justify-center px-5 py-2.5 border-2 border-cream/70 text-cream text-xs font-sans font-semibold tracking-wide hover:bg-cream/15 transition-colors duration-200' : 'btn-primary text-xs py-2.5 px-5'}
                 >
                   Register
                 </button>
@@ -90,7 +106,7 @@ export default function Navbar({ onLoginClick }: NavbarProps) {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMenuOpen(!menuOpen)}
-            className="md:hidden p-2 text-charcoal/70 hover:text-brand"
+            className={`md:hidden p-2 transition-colors ${iconCls}`}
             aria-label="Toggle menu"
           >
             {menuOpen ? <X size={20} /> : <Menu size={20} />}
