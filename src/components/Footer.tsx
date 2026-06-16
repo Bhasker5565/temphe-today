@@ -32,17 +32,21 @@ export default function Footer() {
           <div>
             <p className="font-sans text-xs font-semibold uppercase tracking-widest text-cream/40 mb-5">Platform</p>
             <ul className="space-y-3">
-              {[
-                { label: 'Browse Operators', to: '/#operators' },
-                { label: 'How It Works', to: '/#how-it-works' },
-                { label: 'Register as Investor', to: '/register' },
-              ].map(({ label, to }) => (
-                <li key={label}>
-                  <Link to={to} className="font-sans text-sm text-cream/55 hover:text-turmeric transition-colors">
-                    {label}
-                  </Link>
-                </li>
-              ))}
+              <li>
+                <a href="/#operators" className="font-sans text-sm text-cream/55 hover:text-turmeric transition-colors">
+                  Browse Operators
+                </a>
+              </li>
+              <li>
+                <a href="/#how-it-works" className="font-sans text-sm text-cream/55 hover:text-turmeric transition-colors">
+                  How It Works
+                </a>
+              </li>
+              <li>
+                <Link to="/register" className="font-sans text-sm text-cream/55 hover:text-turmeric transition-colors">
+                  Register as Investor
+                </Link>
+              </li>
             </ul>
           </div>
 
