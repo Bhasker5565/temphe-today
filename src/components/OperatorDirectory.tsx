@@ -43,7 +43,7 @@ export default function OperatorDirectory() {
         {/* Header */}
         <div className="mb-12">
           <p className="section-label mb-2">Our Operators</p>
-          <h2 className="font-display text-charcoal text-3xl md:text-4xl font-bold mb-3">
+          <h2 className="font-display text-charcoal text-3xl md:text-4xl font-bold mb-3 [font-optical-sizing:none]">
             Meet the women building India's tempeh future
           </h2>
           <p className="font-sans text-charcoal/60 text-base max-w-2xl">
