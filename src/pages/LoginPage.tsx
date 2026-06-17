@@ -11,8 +11,9 @@ export default function LoginPage() {
   const [password, setPassword] = useState('')
   const [showPassword, setShowPassword] = useState(false)
   const [error, setError] = useState('')
+  const [submitting, setSubmitting] = useState(false)
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setError('')
 
@@ -25,11 +26,14 @@ export default function LoginPage() {
       return
     }
 
-    const success = login(email, password)
+    setSubmitting(true)
+    const { success, error: loginError } = await login(email, password)
+    setSubmitting(false)
+
     if (success) {
       navigate('/')
     } else {
-      setError('No account found with that email. Please register first.')
+      setError(loginError || 'Could not log in. Please check your credentials.')
     }
   }
 
@@ -124,8 +128,8 @@ export default function LoginPage() {
                 </div>
               )}
 
-              <button type="submit" className="btn-primary w-full justify-center text-sm py-3.5">
-                Log In
+              <button type="submit" disabled={submitting} className="btn-primary w-full justify-center text-sm py-3.5 disabled:opacity-60">
+                {submitting ? 'Logging in…' : 'Log In'}
               </button>
 
               <p className="font-sans text-xs text-charcoal/40 text-center pt-1">

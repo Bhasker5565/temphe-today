@@ -2,7 +2,6 @@ import { useState } from 'react'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 import { ArrowLeft, Heart, MessageSquare, MapPin, Calendar } from 'lucide-react'
 import { operators } from '../data/operators'
-import type { InvestmentType } from '../types'
 import StoryTab from '../components/tabs/StoryTab'
 import ProductionTab from '../components/tabs/ProductionTab'
 import HappinessTab from '../components/tabs/HappinessTab'
@@ -19,22 +18,6 @@ const TABS: { id: TabId; label: string }[] = [
   { id: 'happiness', label: 'Her Happiness' },
   { id: 'gallery', label: 'Her Gallery' },
 ]
-
-function InvestmentBadge({ type }: { type: InvestmentType }) {
-  const classMap: Record<InvestmentType, string> = {
-    'Grant': 'badge-grant',
-    'Loan': 'badge-loan',
-    'Loan with Interest': 'badge-interest',
-    'Equity': 'badge-equity',
-  }
-  const labelMap: Record<InvestmentType, string> = {
-    'Grant': 'Grant',
-    'Loan': 'Impact Loan',
-    'Loan with Interest': 'Loan + Interest',
-    'Equity': 'Equity',
-  }
-  return <span className={classMap[type]}>{labelMap[type]}</span>
-}
 
 export default function OperatorProfilePage() {
   const { id } = useParams<{ id: string }>()
@@ -94,11 +77,6 @@ export default function OperatorProfilePage() {
                 <div className="flex items-center gap-1.5 font-sans text-cream/70 text-sm">
                   <Calendar size={13} /> {operator.yearsInOperation} {operator.yearsInOperation === 1 ? 'year' : 'years'} in operation
                 </div>
-              </div>
-              <div className="flex flex-wrap gap-1.5 mt-2">
-                {operator.investmentTypes.map(type => (
-                  <InvestmentBadge key={type} type={type} />
-                ))}
               </div>
             </div>
 

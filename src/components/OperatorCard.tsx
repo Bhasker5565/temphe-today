@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom'
-import type { Operator, InvestmentType } from '../types'
+import type { Operator } from '../types'
 
 function ProductionMeter({ kg, target = 90 }: { kg: number; target?: number }) {
   const dots = 15
@@ -28,22 +28,6 @@ function ProductionMeter({ kg, target = 90 }: { kg: number; target?: number }) {
       </div>
     </div>
   )
-}
-
-function InvestmentBadge({ type }: { type: InvestmentType }) {
-  const classMap: Record<InvestmentType, string> = {
-    'Grant': 'badge-grant',
-    'Loan': 'badge-loan',
-    'Loan with Interest': 'badge-interest',
-    'Equity': 'badge-equity',
-  }
-  const labelMap: Record<InvestmentType, string> = {
-    'Grant': 'Grant',
-    'Loan': 'Impact Loan',
-    'Loan with Interest': 'Loan + Interest',
-    'Equity': 'Equity',
-  }
-  return <span className={classMap[type]}>{labelMap[type]}</span>
 }
 
 export default function OperatorCard({ operator }: { operator: Operator }) {
@@ -109,13 +93,8 @@ export default function OperatorCard({ operator }: { operator: Operator }) {
           <ProductionMeter kg={operator.lastWeekProduction} target={operator.productionTarget} />
         </div>
 
-        {/* Badges + CTA */}
-        <div className="pt-3.5 border-t border-cream-deep flex items-center justify-between gap-3">
-          <div className="flex flex-wrap gap-1.5">
-            {operator.investmentTypes.map(type => (
-              <InvestmentBadge key={type} type={type} />
-            ))}
-          </div>
+        {/* CTA */}
+        <div className="pt-3.5 border-t border-cream-deep flex items-center justify-end">
           <span className="font-sans text-sm font-semibold text-brand group-hover:text-brand-light transition-colors flex items-center gap-1 shrink-0">
             View Her Story
             <span className="group-hover:translate-x-1 transition-transform inline-block">→</span>
