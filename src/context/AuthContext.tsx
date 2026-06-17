@@ -1,12 +1,20 @@
 import { createContext, useContext, useState, useEffect, type ReactNode } from 'react';
+import { supabase } from '../lib/supabaseClient';
 import type { RegisteredUser } from '../types';
+
+interface AuthResult {
+  success: boolean;
+  error?: string;
+  loggedIn?: boolean;
+}
 
 interface AuthContextType {
   isLoggedIn: boolean;
   user: RegisteredUser | null;
-  login: (email: string, password: string) => boolean;
-  register: (user: RegisteredUser, password: string) => void;
-  logout: () => void;
+  loading: boolean;
+  login: (email: string, password: string) => Promise<AuthResult>;
+  register: (user: RegisteredUser, password: string) => Promise<AuthResult>;
+  logout: () => Promise<void>;
   supportedOperators: string[];
   supportOperator: (operatorId: string) => void;
 }
@@ -15,17 +23,44 @@ const AuthContext = createContext<AuthContextType | null>(null);
 
 export function AuthProvider({ children }: { children: ReactNode }) {
   const [user, setUser] = useState<RegisteredUser | null>(null);
+  const [loading, setLoading] = useState(true);
   const [supportedOperators, setSupportedOperators] = useState<string[]>([]);
 
   useEffect(() => {
-    const stored = localStorage.getItem('tt_user');
-    if (stored) {
-      try {
-        setUser(JSON.parse(stored));
-      } catch {
-        localStorage.removeItem('tt_user');
+    const loadProfile = async (userId: string) => {
+      const { data } = await supabase
+        .from('users')
+        .select('full_name, email, mobile, country, investment_interest')
+        .eq('id', userId)
+        .single();
+
+      if (data) {
+        setUser({
+          name: data.full_name,
+          email: data.email,
+          investmentInterest: data.investment_interest ?? '',
+          mobile: data.mobile ?? undefined,
+          country: data.country ?? undefined,
+        });
       }
-    }
+    };
+
+    supabase.auth.getSession().then(({ data: { session } }) => {
+      if (session?.user) {
+        loadProfile(session.user.id).finally(() => setLoading(false));
+      } else {
+        setLoading(false);
+      }
+    });
+
+    const { data: listener } = supabase.auth.onAuthStateChange((_event, session) => {
+      if (session?.user) {
+        loadProfile(session.user.id);
+      } else {
+        setUser(null);
+      }
+    });
+
     const ops = localStorage.getItem('tt_supported');
     if (ops) {
       try {
@@ -34,31 +69,37 @@ export function AuthProvider({ children }: { children: ReactNode }) {
         localStorage.removeItem('tt_supported');
       }
     }
+
+    return () => listener.subscription.unsubscribe();
   }, []);
 
-  const register = (newUser: RegisteredUser, _password: string) => {
-    const stored = JSON.stringify(newUser);
-    localStorage.setItem('tt_user', stored);
-    setUser(newUser);
+  const register = async (newUser: RegisteredUser, password: string): Promise<AuthResult> => {
+    const { data, error } = await supabase.auth.signUp({
+      email: newUser.email,
+      password,
+      options: {
+        data: {
+          full_name: newUser.name,
+          mobile: newUser.mobile,
+          country: newUser.country,
+          investment_interest: newUser.investmentInterest,
+        },
+      },
+    });
+    if (error) return { success: false, error: error.message };
+    // With email confirmation disabled, signUp returns an active session
+    // immediately, so the investor is already logged in at this point.
+    return { success: true, loggedIn: !!data.session };
   };
 
-  const login = (email: string, _password: string): boolean => {
-    const stored = localStorage.getItem('tt_user');
-    if (!stored) return false;
-    try {
-      const u: RegisteredUser = JSON.parse(stored);
-      if (u.email.toLowerCase() === email.toLowerCase()) {
-        setUser(u);
-        return true;
-      }
-    } catch {
-      // invalid storage
-    }
-    return false;
+  const login = async (email: string, password: string): Promise<AuthResult> => {
+    const { error } = await supabase.auth.signInWithPassword({ email, password });
+    if (error) return { success: false, error: error.message };
+    return { success: true };
   };
 
-  const logout = () => {
-    setUser(null);
+  const logout = async () => {
+    await supabase.auth.signOut();
   };
 
   const supportOperator = (operatorId: string) => {
@@ -74,6 +115,7 @@ export function AuthProvider({ children }: { children: ReactNode }) {
       value={{
         isLoggedIn: !!user,
         user,
+        loading,
         login,
         register,
         logout,

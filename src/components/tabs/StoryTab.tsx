@@ -1,4 +1,20 @@
+import { Cake } from 'lucide-react'
 import type { Operator } from '../../types'
+
+function formatDateOfBirth(dateOfBirth: string) {
+  return new Date(dateOfBirth).toLocaleDateString('en-IN', { day: 'numeric', month: 'long', year: 'numeric' })
+}
+
+function calculateAge(dateOfBirth: string) {
+  const dob = new Date(dateOfBirth)
+  const today = new Date()
+  let age = today.getFullYear() - dob.getFullYear()
+  const hadBirthdayThisYear =
+    today.getMonth() > dob.getMonth() ||
+    (today.getMonth() === dob.getMonth() && today.getDate() >= dob.getDate())
+  if (!hadBirthdayThisYear) age--
+  return age
+}
 
 const healthColor: Record<string, string> = {
   Good: 'text-forest font-medium',
@@ -17,6 +33,16 @@ export default function StoryTab({ operator }: { operator: Operator }) {
       {/* Bio */}
       <div>
         <p className="section-label mb-4">Her Story</p>
+        <div className="inline-flex items-center gap-2.5 mb-5 px-3.5 py-1.5 bg-cream-warm/60 border border-cream-deep rounded-full">
+          <Cake size={13} className="text-sienna shrink-0" />
+          <span className="font-display text-sm font-semibold text-charcoal/80">
+            {calculateAge(operator.dateOfBirth)} years old
+          </span>
+          <span className="w-1 h-1 rounded-full bg-charcoal/25 shrink-0" />
+          <span className="font-sans text-xs text-charcoal/50">
+            Born {formatDateOfBirth(operator.dateOfBirth)}
+          </span>
+        </div>
         <div className="space-y-4">
           {operator.bio.split('\n\n').map((para, i) => (
             <p key={i} className="font-sans text-charcoal/80 text-base leading-relaxed">
