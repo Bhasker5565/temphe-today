@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeOff, CheckCircle2, ArrowRight } from 'lucide-react'
 import { useAuth } from '../context/AuthContext'
 
@@ -17,6 +17,7 @@ const COUNTRIES = ['India', 'United Kingdom', 'United States', 'Netherlands', 'G
 
 export default function RegisterPage() {
   const { register } = useAuth()
+  const navigate = useNavigate()
 
   const [form, setForm] = useState({
     fullName: '',
@@ -32,6 +33,7 @@ export default function RegisterPage() {
   const [showConfirm, setShowConfirm] = useState(false)
   const [errors, setErrors] = useState<Record<string, string>>({})
   const [submitted, setSubmitted] = useState(false)
+  const [submitting, setSubmitting] = useState(false)
 
   const set = (field: string, value: string | boolean) =>
     setForm(prev => ({ ...prev, [field]: value }))
@@ -47,15 +49,34 @@ export default function RegisterPage() {
     return e
   }
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     const errs = validate()
     if (Object.keys(errs).length > 0) {
       setErrors(errs)
       return
     }
-    register({ name: form.fullName, email: form.email, investmentInterest: form.interest as string }, form.password)
-    setSubmitted(true)
+    setSubmitting(true)
+    const { success, error, loggedIn } = await register(
+      {
+        name: form.fullName,
+        email: form.email,
+        investmentInterest: form.interest as string,
+        mobile: form.mobile || undefined,
+        country: form.country,
+      },
+      form.password
+    )
+    setSubmitting(false)
+    if (success) {
+      if (loggedIn) {
+        navigate('/')
+      } else {
+        setSubmitted(true)
+      }
+    } else {
+      setErrors({ form: error || 'Could not create your account. Please try again.' })
+    }
   }
 
   if (submitted) {
@@ -288,10 +309,17 @@ export default function RegisterPage() {
                 {errors.agreeTerms && <p className="font-sans text-xs text-red-500 mt-1 ml-8">{errors.agreeTerms}</p>}
               </div>
 
+              {/* Form-level error */}
+              {errors.form && (
+                <div className="bg-red-50 border border-red-200 px-4 py-3">
+                  <p className="font-sans text-sm text-red-600">{errors.form}</p>
+                </div>
+              )}
+
               {/* Submit */}
               <div className="pt-2">
-                <button type="submit" className="btn-primary w-full justify-center gap-2 py-4 text-sm">
-                  Create My Account 🚀
+                <button type="submit" disabled={submitting} className="btn-primary w-full justify-center gap-2 py-4 text-sm disabled:opacity-60">
+                  {submitting ? 'Creating account…' : 'Create My Account 🚀'}
                 </button>
               </div>
             </form>

@@ -34,7 +34,7 @@ export default {
         },
       },
       fontFamily: {
-        display: ['Fraunces', 'Georgia', 'serif'],
+        display: ['Zodiak', 'Georgia', 'serif'],
         sans: ['Plus Jakarta Sans', 'system-ui', 'sans-serif'],
       },
       boxShadow: {

@@ -72,7 +72,7 @@ export default function HeroBanner() {
           </div>
           <div className="border-l border-cream/20 pl-5 sm:pl-8 md:pl-12">
             <div className="font-display text-turmeric text-xl sm:text-2xl md:text-3xl font-bold leading-none">1,200+</div>
-            <div className="font-sans text-cream/55 text-[10px] sm:text-xs mt-1">Families Fed Weekly</div>
+            <div className="font-sans text-cream/55 text-[10px] sm:text-xs mt-1">Livelihoods Impacted</div>
           </div>
         </div>
       </div>

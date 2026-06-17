@@ -33,6 +33,7 @@ export interface Operator {
   city: string;
   state: string;
   mfuId: string;
+  dateOfBirth: string;
   yearsInOperation: number;
   photo: string;
   bannerPhoto: string;
@@ -64,6 +65,8 @@ export interface RegisteredUser {
   name: string;
   email: string;
   investmentInterest: string;
+  mobile?: string;
+  country?: string;
 }
 
 export interface InvestmentInterestPayload {
